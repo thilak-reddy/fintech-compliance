@@ -123,8 +123,54 @@ def setup_password_policy():
         except PermissionError:
             logger.warning("Could not set restrictive permissions on password policy file")
     except PermissionError as e:
-        logger.error(f"Could not create password policy file: {e}")
+        logger.error("Could not create password policy file.")
         raise
+
+    # -----------------------------
+# SOC 2 Compliance: Log File Protection
+# -----------------------------
+def check_and_fix_log_file():
+    log_file = "/var/log/syslog"
+
+    if not os.path.exists(log_file):
+        logger.warning(f"Log file {log_file} does not exist! Creating it with secure permissions.")
+
+        try:
+            # Create the log file
+            with open(log_file, 'w') as f:
+                f.write("Log initialized for compliance.\n")
+
+            # Set ownership to root (only works if run as root)
+            os.chown(log_file, 0, 0)  # 0,0 corresponds to root:root
+            
+            # Set permissions: -rw-r----- (640)
+            os.chmod(log_file, 0o640)
+
+            logger.info(f"Log file {log_file} created and secured.")
+
+        except PermissionError:
+            logger.error(f"Permission denied: Cannot create {log_file}. Run the script with sudo.")
+            return
+
+    # Check file owner
+    stat_info = os.stat(log_file)
+    owner_uid = stat_info.st_uid
+    owner_name = subprocess.getoutput(f"id -nu {owner_uid}")
+
+    # Get file permissions
+    file_mode = stat_info.st_mode
+    is_world_writable = bool(file_mode & 0o002)
+
+    # Compliance check
+    if owner_name != "root":
+        logger.warning(f"Fixing ownership: {log_file} is owned by {owner_name}, changing to 'root'.")
+        os.chown(log_file, 0, 0)  # Change to root
+    if is_world_writable:
+        logger.warning(f"Fixing permissions: {log_file} is world-writable. Securing it.")
+        os.chmod(log_file, 0o640)  # Set to -rw-r-----
+
+    logger.info(f"Compliance Passed: {log_file} is properly secured.")
+
 
 # -----------------------------
 # Simulate a Transaction
@@ -238,6 +284,7 @@ def run_https_server():
 # -----------------------------
 if __name__ == '__main__':
     setup_directories()
+    check_and_fix_log_file()
     setup_backup()
     setup_change_management()
     setup_incident_response()

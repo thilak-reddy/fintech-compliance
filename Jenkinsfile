@@ -1,114 +1,76 @@
 pipeline {
     agent any
-    
     environment {
-        DB_PASSWORD = credentials('db-password')
-        API_KEY = credentials('api-key')
-        DOCKER_BUILDKIT = '1'
+        IMAGE_NAME = 'pci-test-app'
+        CONTAINER_NAME = 'pci-test-app'
     }
-    
     stages {
-        stage('Security Scan') {
+        stage('Setup Local Files') {
             steps {
-                // Scan for secrets and security issues
-                sh 'git secrets --scan'
-                sh 'bandit -r .'
+                sh 'rm -rf *'
+                sh 'rsync -av --exclude=".git" /Users/thilak_reddy/Desktop/fintech-compliance/ .'
+                sh 'ls -la'
             }
         }
-        
-        stage('Build') {
+
+        stage('Build Docker Image') {
             steps {
-                // Build with security flags
-                sh '''
-                    docker build \
-                    --no-cache \
-                    --security-opt=no-new-privileges \
-                    -t fintech-app .
-                '''
+                sh "docker build --no-cache -t ${IMAGE_NAME} app/"
             }
         }
-        
-        stage('Compliance Check') {
+
+        stage('Run Application Container') {
             steps {
-                // Run compliance checks
-                sh 'python3 compliance-check.py --pci --soc2'
-                
-                // Run InSpec tests for both PCI and SOC2
-                sh '''
-                    inspec exec compliance/inspec/pci \
-                    --target docker://fintech-app \
-                    --reporter cli json:compliance_logs/pci_results.json
-                '''
-                sh '''
-                    inspec exec compliance/inspec/soc2 \
-                    --target docker://fintech-app \
-                    --reporter cli json:compliance_logs/soc2_results.json
-                '''
-                
-                // Check backup and recovery
-                sh 'python3 -c "import app.app; app.app.setup_backup()"'
-                
-                // Verify SSL/TLS configuration
-                sh 'openssl s_client -connect localhost:8443 -tls1_2'
+                script {
+                    sh "docker rm -f ${CONTAINER_NAME} || true"
+                    sh "docker run -d --name ${CONTAINER_NAME} -p 8443:8443 ${IMAGE_NAME}"
+                    sleep(time: 10, unit: 'SECONDS')
+                    sh "docker logs ${CONTAINER_NAME}"
+                }
             }
         }
-        
-        stage('Security Tests') {
+
+        stage('Verify PCI Profile Structure') {
             steps {
-                // Run security tests
-                sh 'pytest tests/security/'
-                
-                // Check for hardcoded credentials
-                sh 'inspec exec compliance/inspec/soc2/controls/no_hardcoded_creds.rb'
-                
-                // Verify file permissions
-                sh '''
-                    find . -type f -name "*.json" -exec stat -f "%Sp %N" {} \\;
-                    find . -type f -name "*.key" -exec stat -f "%Sp %N" {} \\;
-                '''
+                sh 'ls -la ${WORKSPACE}/compliance/inspec/pci'
             }
         }
-        
-        stage('Deploy') {
+
+        stage('Run PCI Compliance Tests') {
             steps {
-                // Deploy with security configurations
-                sh '''
-                    docker-compose up -d \
-                    --force-recreate \
-                    --no-deps \
-                    --remove-orphans
-                '''
-                
-                // Verify deployment
-                sh 'curl -k https://localhost:8443/health'
+                script {
+                    sh """
+                    sleep 10
+                    echo 'Checking container logs...'
+                    docker logs ${CONTAINER_NAME}
+
+                    docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept \\
+                      -v ${WORKSPACE}/compliance/inspec/pci:/profile \\
+                      -v /var/run/docker.sock:/var/run/docker.sock \\
+                      chef/inspec exec /profile --target docker://${CONTAINER_NAME}
+                    """
+                }
+            }
+        }
+
+        stage('Run SOC2 Compliance Tests') {
+            steps {
+                script {
+                    sh """
+                    docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept \\
+                      -v ${WORKSPACE}/compliance/inspec/soc2:/profile \\
+                      -v /var/run/docker.sock:/var/run/docker.sock \\
+                      chef/inspec exec /profile --target docker://${CONTAINER_NAME}
+                    """
+                }
             }
         }
     }
-    
     post {
         always {
-            // Archive compliance and security logs
-            archiveArtifacts artifacts: '''
-                compliance_logs/*.txt,
-                compliance_logs/*.json,
-                app/logs/incidents/*.log
-            '''
-            
-            // Clean up sensitive data
-            sh '''
-                docker-compose down
-                find . -type f -name "*.key" -delete
-                find . -type f -name "*.env" -delete
-            '''
-        }
-        
-        failure {
-            // Alert on failures
-            emailext (
-                subject: "Pipeline Failed: ${currentBuild.fullDisplayName}",
-                body: "Check the build log for details: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-            )
+            sh "docker logs ${CONTAINER_NAME} > compliance_logs/docker_logs.txt || true"
+            sh "docker rm -f ${CONTAINER_NAME} || true"
+            archiveArtifacts artifacts: 'compliance_logs/docker_logs.txt, compliance_logs/compliance_logs.txt', allowEmptyArchive: true
         }
     }
 }

@@ -1,43 +1,32 @@
+# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
-# Install required system dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    openssl \
-    curl \
+# Install system dependencies (git is needed for change management, openssl for TLS-related tasks)
+RUN apt-get update && apt-get install -y \
     git \
-    && rm -rf /var/lib/apt/lists/*
+    openssl \
+ && rm -rf /var/lib/apt/lists/*
 
-# Create non-root user
-RUN groupadd -r app_user && useradd -r -g app_user app_user
+# Create a non-root user 'app_user'
+RUN useradd -m app_user
 
-# Set up application directory
+# Set working directory to /app
 WORKDIR /app
 
-# Copy requirements first for better caching
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the entire app directory contents into /app
+COPY . /app
 
-# Copy application files
-COPY . .
+# Install required Python packages
+RUN pip install --no-cache-dir cryptography
 
-# Create required directories with proper permissions
-RUN mkdir -p backup logs/incidents docs config && \
-    chown -R app_user:app_user /app && \
-    chmod 755 logs && \
-    chmod 750 logs/incidents && \
-    chmod 755 config && \
-    chmod 600 config/password_policy.json
+# Ensure all files are owned by app_user
+RUN chown -R app_user:app_user /app
 
-# Switch to non-root user
+# Switch to non-root user (this is important for some controls which check file ownership)
 USER app_user
 
-# Expose the port used in app.py (8443)
+# Expose the HTTPS port (your app uses 8443 – note that tls_check.rb expects 443; you may wish to update that control)
 EXPOSE 8443
 
-# Health check using the correct port
-HEALTHCHECK --interval=30s --timeout=5s \
-    CMD curl -k https://localhost:8443/health || exit 1
-
 # Run the application
-CMD ["python3", "app.py"]
+CMD ["python", "app.py"]
