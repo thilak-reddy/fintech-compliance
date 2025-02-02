@@ -1,3 +1,8 @@
 name: soc2-checks
 title: SOC2 Compliance Checks
-version: 1.0.0
+version: 1.1.0
+supports:
+  - platform: linux
+depends:
+  - name: linux-baseline
+    url: https://github.com/dev-sec/linux-baseline
