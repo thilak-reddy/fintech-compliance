@@ -4,6 +4,10 @@ import logging
 import hashlib
 import json
 from datetime import datetime
+import os
+
+# Add before logging configuration
+os.makedirs('/app/logs', exist_ok=True)
 
 # Configure logging
 logging.basicConfig(

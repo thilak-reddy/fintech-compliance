@@ -1,10 +1,3 @@
 name: pci-checks
 title: PCI DSS Enhanced Checks
 version: 1.2.0
-supports:
-  - platform: linux
-depends:
-  - name: docker
-    url: https://github.com/dev-sec/docker-baseline
-  - name: linux-baseline
-    url: https://github.com/dev-sec/linux-baseline
