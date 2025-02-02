@@ -2,6 +2,8 @@ pipeline {
     agent any
     
     environment {
+        DB_PASSWORD = credentials('db-password')
+        API_KEY = credentials('api-key')
         DOCKER_BUILDKIT = '1'
     }
     
@@ -100,13 +102,13 @@ pipeline {
             '''
         }
         
-        // failure {
-        //     // Alert on failures
-        //     // emailext (
-        //     //     subject: "Pipeline Failed: ${currentBuild.fullDisplayName}",
-        //     //     body: "Check the build log for details: ${env.BUILD_URL}",
-        //     //     recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-        //     // )
-        // }
+        failure {
+            // Alert on failures
+            emailext (
+                subject: "Pipeline Failed: ${currentBuild.fullDisplayName}",
+                body: "Check the build log for details: ${env.BUILD_URL}",
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+            )
+        }
     }
 }
