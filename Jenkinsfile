@@ -46,7 +46,9 @@ pipeline {
                     docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept \\
                       -v ${WORKSPACE}/compliance/inspec/pci:/profile \\
                       -v /var/run/docker.sock:/var/run/docker.sock \\
-                      chef/inspec exec /profile --no-color --target docker://${CONTAINER_NAME}
+                      chef/inspec exec /profile --no-color --reporter json:/pci_report.json --target docker://${CONTAINER_NAME}
+
+                    mv pci_report.json ${WORKSPACE}/compliance_logs/pci_report.json
                     """
                 }
             }
@@ -59,7 +61,9 @@ pipeline {
                     docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept \\
                       -v ${WORKSPACE}/compliance/inspec/soc2:/profile \\
                       -v /var/run/docker.sock:/var/run/docker.sock \\
-                      chef/inspec exec /profile --no-color --target docker://${CONTAINER_NAME}
+                      chef/inspec exec /profile --no-color --reporter json:/soc2_report.json --target docker://${CONTAINER_NAME}
+
+                    mv soc2_report.json ${WORKSPACE}/compliance_logs/soc2_report.json
                     """
                 }
             }
@@ -69,7 +73,7 @@ pipeline {
         always {
             sh "docker logs ${CONTAINER_NAME} > compliance_logs/docker_logs.txt || true"
             sh "docker rm -f ${CONTAINER_NAME} || true"
-            archiveArtifacts artifacts: 'compliance_logs/docker_logs.txt, compliance_logs/compliance_logs.txt', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'compliance_logs/docker_logs.txt, compliance_logs/pci_report.json, compliance_logs/soc2_report.json', allowEmptyArchive: true
         }
 
         success {

@@ -98,21 +98,38 @@ def get_latest_build():
     return response.text.strip() if response.status_code == 200 else None
 
 def wait_for_build(build_number):
+    """Waits until the Jenkins build completes."""
     while True:
         url = f"{JENKINS_URL}/job/{JOB_NAME}/{build_number}/api/json"
         response = requests.get(url, auth=(USER, API_TOKEN))
-        result = response.json().get("result")
+        
+        if response.status_code != 200:
+            logger.warning(f"Error fetching build status (HTTP {response.status_code}), retrying...")
+            time.sleep(5)
+            continue
 
-        if result:
-            logger.info(f"Build completed with status: {result}")
-            if result == 'SUCCESS':
+        build_data = response.json()
+
+        is_building = build_data.get("building", False)
+        in_progress = build_data.get("inProgress", False)
+        result = build_data.get("result")
+
+        if not is_building and not in_progress:
+            # Build is finished, now check the result
+            logger.info(f"Build {build_number} completed with status: {result}")
+
+            if result == "SUCCESS":
                 detailed_report = analyze_compliance_reports()
                 logger.info(f"Compliance check summary: {json.dumps(detailed_report['summary'], indent=2)}")
+                
                 if detailed_report['failures']:
-                    logger.warning("Some compliance checks failed. Check detailed_compliance_report.json for more information.")
+                    logger.warning("Some compliance checks failed. Check detailed_compliance_report.json for more details.")
+            
             return result
-        logger.info("Waiting for build to complete...")
-        time.sleep(5)
+
+        logger.info(f"Build {build_number} is still running...")
+        time.sleep(5)  # Poll every 5 seconds
+
 
 def fetch_logs(build_number):
     # Ensure the log directory exists

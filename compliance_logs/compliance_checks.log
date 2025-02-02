@@ -3,3 +3,8 @@
 2025-02-03 01:43:32,211 - ERROR - Error processing soc2 report: [Errno 2] No such file or directory: 'soc2_report.json'
 2025-02-03 01:43:32,212 - INFO - Compliance check summary: {}
 2025-02-03 01:43:32,212 - WARNING - Some compliance checks failed. Check detailed_compliance_report.json for more information.
+2025-02-03 01:50:38,657 - INFO - Build 79 completed with status: SUCCESS
+2025-02-03 01:50:38,657 - ERROR - Error processing pci report: [Errno 2] No such file or directory: 'pci_report.json'
+2025-02-03 01:50:38,657 - ERROR - Error processing soc2 report: [Errno 2] No such file or directory: 'soc2_report.json'
+2025-02-03 01:50:38,658 - INFO - Compliance check summary: {}
+2025-02-03 01:50:38,658 - WARNING - Some compliance checks failed. Check detailed_compliance_report.json for more details.
