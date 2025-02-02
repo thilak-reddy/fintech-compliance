@@ -9,4 +9,4 @@
 ## [0.9.0] - 2023-07-15
 ### Changed
 - Updated security configurations
-- Improved Dockerfile permissions
+- Improved Dockerfile permissions.

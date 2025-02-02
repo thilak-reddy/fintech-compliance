@@ -52,14 +52,14 @@ compliance/inspec/soc2/controls/logging.rb
 compliance_logs/
 compliance_logs/compliance_logs.txt
 
-sent 54037 bytes  received 638 bytes  109350.00 bytes/sec
-total size is 51805  speedup is 0.95
+sent 57300 bytes  received 638 bytes  115876.00 bytes/sec
+total size is 55068  speedup is 0.95
 [Pipeline] sh
 + ls -la
 total 24
 drwxr-xr-x   7 thilak_reddy  staff   224 Feb  2 18:00 .
 drwxr-xr-x  14 thilak_reddy  staff   448 Feb  2 21:00 ..
--rw-r--r--   1 thilak_reddy  staff  2534 Feb  3 00:58 Jenkinsfile
+-rw-r--r--   1 thilak_reddy  staff  2527 Feb  3 01:24 Jenkinsfile
 drwxr-xr-x  11 thilak_reddy  staff   352 Feb  2 22:07 app
 drwxr-xr-x   3 thilak_reddy  staff    96 Feb  1 11:48 compliance
 -rw-r--r--   1 thilak_reddy  staff  4699 Feb  2 20:09 compliance-check.py
@@ -77,7 +77,7 @@ drwxr-xr-x   3 thilak_reddy  staff    96 Feb  2 17:15 compliance_logs
 #1 DONE 0.0s
 
 #2 [internal] load metadata for docker.io/library/python:3.9-slim
-#2 DONE 1.7s
+#2 DONE 1.5s
 
 #3 [internal] load .dockerignore
 #3 transferring context: 2B done
@@ -91,224 +91,224 @@ drwxr-xr-x   3 thilak_reddy  staff    96 Feb  2 17:15 compliance_logs
 #5 DONE 0.0s
 
 #6 [2/7] RUN apt-get update && apt-get install -y     git     openssl  && rm -rf /var/lib/apt/lists/*
-#6 0.379 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
-#6 0.714 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
-#6 0.856 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
-#6 1.037 Get:4 http://deb.debian.org/debian bookworm/main arm64 Packages [8693 kB]
-#6 13.26 Get:5 http://deb.debian.org/debian bookworm-updates/main arm64 Packages [13.3 kB]
-#6 13.80 Get:6 http://deb.debian.org/debian-security bookworm-security/main arm64 Packages [239 kB]
-#6 14.03 Fetched 9199 kB in 14s (663 kB/s)
-#6 14.03 Reading package lists...
-#6 14.42 Reading package lists...
-#6 14.84 Building dependency tree...
-#6 14.91 Reading state information...
-#6 15.01 openssl is already the newest version (3.0.15-1~deb12u1).
-#6 15.01 openssl set to manually installed.
-#6 15.01 The following additional packages will be installed:
-#6 15.01   git-man less libbrotli1 libbsd0 libcbor0.8 libcurl3-gnutls libedit2
-#6 15.01   liberror-perl libexpat1 libfido2-1 libgdbm-compat4 libldap-2.5-0
-#6 15.01   libldap-common libnghttp2-14 libperl5.36 libpsl5 librtmp1 libsasl2-2
-#6 15.01   libsasl2-modules libsasl2-modules-db libssh2-1 libx11-6 libx11-data libxau6
-#6 15.01   libxcb1 libxdmcp6 libxext6 libxmuu1 openssh-client patch perl
-#6 15.01   perl-modules-5.36 publicsuffix xauth
-#6 15.01 Suggested packages:
-#6 15.01   gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui
-#6 15.01   gitk gitweb git-cvs git-mediawiki git-svn sensible-utils
-#6 15.01   libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal
-#6 15.01   libsasl2-modules-ldap libsasl2-modules-otp libsasl2-modules-sql keychain
-#6 15.01   libpam-ssh monkeysphere ssh-askpass ed diffutils-doc perl-doc
-#6 15.01   libterm-readline-gnu-perl | libterm-readline-perl-perl make
-#6 15.01   libtap-harness-archive-perl
-#6 15.15 The following NEW packages will be installed:
-#6 15.15   git git-man less libbrotli1 libbsd0 libcbor0.8 libcurl3-gnutls libedit2
-#6 15.15   liberror-perl libexpat1 libfido2-1 libgdbm-compat4 libldap-2.5-0
-#6 15.15   libldap-common libnghttp2-14 libperl5.36 libpsl5 librtmp1 libsasl2-2
-#6 15.15   libsasl2-modules libsasl2-modules-db libssh2-1 libx11-6 libx11-data libxau6
-#6 15.15   libxcb1 libxdmcp6 libxext6 libxmuu1 openssh-client patch perl
-#6 15.15   perl-modules-5.36 publicsuffix xauth
-#6 15.27 0 upgraded, 35 newly installed, 0 to remove and 0 not upgraded.
-#6 15.27 Need to get 20.7 MB of archives.
-#6 15.27 After this operation, 116 MB of additional disk space will be used.
-#6 15.27 Get:1 http://deb.debian.org/debian bookworm/main arm64 perl-modules-5.36 all 5.36.0-7+deb12u1 [2815 kB]
-#6 18.03 Get:2 http://deb.debian.org/debian bookworm/main arm64 libgdbm-compat4 arm64 1.23-3 [48.0 kB]
-#6 18.05 Get:3 http://deb.debian.org/debian bookworm/main arm64 libperl5.36 arm64 5.36.0-7+deb12u1 [4014 kB]
-#6 20.62 Get:4 http://deb.debian.org/debian bookworm/main arm64 perl arm64 5.36.0-7+deb12u1 [239 kB]
-#6 20.84 Get:5 http://deb.debian.org/debian bookworm/main arm64 less arm64 590-2.1~deb12u2 [128 kB]
-#6 20.84 Get:6 http://deb.debian.org/debian bookworm/main arm64 libbsd0 arm64 0.11.7-2 [115 kB]
-#6 20.85 Get:7 http://deb.debian.org/debian bookworm/main arm64 libedit2 arm64 3.1-20221030-2 [88.1 kB]
-#6 20.85 Get:8 http://deb.debian.org/debian bookworm/main arm64 libcbor0.8 arm64 0.8.0-2+b1 [26.0 kB]
-#6 20.85 Get:9 http://deb.debian.org/debian bookworm/main arm64 libfido2-1 arm64 1.12.0-2+b1 [72.6 kB]
-#6 20.86 Get:10 http://deb.debian.org/debian bookworm/main arm64 openssh-client arm64 1:9.2p1-2+deb12u4 [939 kB]
-#6 21.06 Get:11 http://deb.debian.org/debian bookworm/main arm64 libbrotli1 arm64 1.0.9-2+b6 [269 kB]
-#6 21.06 Get:12 http://deb.debian.org/debian bookworm/main arm64 libsasl2-modules-db arm64 2.1.28+dfsg-10 [20.8 kB]
-#6 21.06 Get:13 http://deb.debian.org/debian bookworm/main arm64 libsasl2-2 arm64 2.1.28+dfsg-10 [58.0 kB]
-#6 21.06 Get:14 http://deb.debian.org/debian bookworm/main arm64 libldap-2.5-0 arm64 2.5.13+dfsg-5 [171 kB]
-#6 21.10 Get:15 http://deb.debian.org/debian bookworm/main arm64 libnghttp2-14 arm64 1.52.0-1+deb12u2 [68.6 kB]
-#6 21.11 Get:16 http://deb.debian.org/debian bookworm/main arm64 libpsl5 arm64 0.21.2-1 [58.6 kB]
-#6 21.12 Get:17 http://deb.debian.org/debian bookworm/main arm64 librtmp1 arm64 2.4+20151223.gitfa8646d.1-2+b2 [59.4 kB]
-#6 21.21 Get:18 http://deb.debian.org/debian bookworm/main arm64 libssh2-1 arm64 1.10.0-3+b1 [172 kB]
-#6 21.23 Get:19 http://deb.debian.org/debian bookworm/main arm64 libcurl3-gnutls arm64 7.88.1-10+deb12u8 [360 kB]
-#6 21.30 Get:20 http://deb.debian.org/debian bookworm/main arm64 libexpat1 arm64 2.5.0-1+deb12u1 [84.6 kB]
-#6 21.30 Get:21 http://deb.debian.org/debian bookworm/main arm64 liberror-perl all 0.17029-2 [29.0 kB]
-#6 21.44 Get:22 http://deb.debian.org/debian-security bookworm-security/main arm64 git-man all 1:2.39.5-0+deb12u2 [2053 kB]
-#6 22.72 Get:23 http://deb.debian.org/debian-security bookworm-security/main arm64 git arm64 1:2.39.5-0+deb12u2 [7148 kB]
-#6 23.89 Get:24 http://deb.debian.org/debian bookworm/main arm64 libldap-common all 2.5.13+dfsg-5 [29.3 kB]
-#6 23.89 Get:25 http://deb.debian.org/debian bookworm/main arm64 libsasl2-modules arm64 2.1.28+dfsg-10 [63.1 kB]
-#6 23.89 Get:26 http://deb.debian.org/debian bookworm/main arm64 libxau6 arm64 1:1.0.9-1 [19.7 kB]
-#6 23.90 Get:27 http://deb.debian.org/debian bookworm/main arm64 libxdmcp6 arm64 1:1.1.2-3 [25.4 kB]
-#6 23.90 Get:28 http://deb.debian.org/debian bookworm/main arm64 libxcb1 arm64 1.15-1 [143 kB]
-#6 23.91 Get:29 http://deb.debian.org/debian bookworm/main arm64 libx11-data all 2:1.8.4-2+deb12u2 [292 kB]
-#6 23.98 Get:30 http://deb.debian.org/debian bookworm/main arm64 libx11-6 arm64 2:1.8.4-2+deb12u2 [735 kB]
-#6 24.28 Get:31 http://deb.debian.org/debian bookworm/main arm64 libxext6 arm64 2:1.3.4-1+b1 [51.7 kB]
-#6 24.28 Get:32 http://deb.debian.org/debian bookworm/main arm64 libxmuu1 arm64 2:1.1.3-3 [24.0 kB]
-#6 24.28 Get:33 http://deb.debian.org/debian bookworm/main arm64 patch arm64 2.7.6-7 [121 kB]
-#6 24.36 Get:34 http://deb.debian.org/debian bookworm/main arm64 publicsuffix all 20230209.2326-1 [126 kB]
-#6 24.39 Get:35 http://deb.debian.org/debian bookworm/main arm64 xauth arm64 1:1.1.2-1 [35.5 kB]
-#6 24.49 debconf: delaying package configuration, since apt-utils is not installed
-#6 24.51 Fetched 20.7 MB in 9s (2241 kB/s)
-#6 24.52 Selecting previously unselected package perl-modules-5.36.
-#6 24.52 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6680 files and directories currently installed.)
-#6 24.53 Preparing to unpack .../00-perl-modules-5.36_5.36.0-7+deb12u1_all.deb ...
-#6 24.53 Unpacking perl-modules-5.36 (5.36.0-7+deb12u1) ...
-#6 24.73 Selecting previously unselected package libgdbm-compat4:arm64.
-#6 24.73 Preparing to unpack .../01-libgdbm-compat4_1.23-3_arm64.deb ...
-#6 24.74 Unpacking libgdbm-compat4:arm64 (1.23-3) ...
-#6 24.76 Selecting previously unselected package libperl5.36:arm64.
-#6 24.76 Preparing to unpack .../02-libperl5.36_5.36.0-7+deb12u1_arm64.deb ...
-#6 24.76 Unpacking libperl5.36:arm64 (5.36.0-7+deb12u1) ...
-#6 25.00 Selecting previously unselected package perl.
-#6 25.00 Preparing to unpack .../03-perl_5.36.0-7+deb12u1_arm64.deb ...
-#6 25.01 Unpacking perl (5.36.0-7+deb12u1) ...
-#6 25.03 Selecting previously unselected package less.
-#6 25.04 Preparing to unpack .../04-less_590-2.1~deb12u2_arm64.deb ...
-#6 25.04 Unpacking less (590-2.1~deb12u2) ...
-#6 25.06 Selecting previously unselected package libbsd0:arm64.
-#6 25.06 Preparing to unpack .../05-libbsd0_0.11.7-2_arm64.deb ...
-#6 25.06 Unpacking libbsd0:arm64 (0.11.7-2) ...
-#6 25.08 Selecting previously unselected package libedit2:arm64.
-#6 25.08 Preparing to unpack .../06-libedit2_3.1-20221030-2_arm64.deb ...
-#6 25.08 Unpacking libedit2:arm64 (3.1-20221030-2) ...
-#6 25.10 Selecting previously unselected package libcbor0.8:arm64.
-#6 25.10 Preparing to unpack .../07-libcbor0.8_0.8.0-2+b1_arm64.deb ...
-#6 25.10 Unpacking libcbor0.8:arm64 (0.8.0-2+b1) ...
-#6 25.12 Selecting previously unselected package libfido2-1:arm64.
-#6 25.12 Preparing to unpack .../08-libfido2-1_1.12.0-2+b1_arm64.deb ...
-#6 25.12 Unpacking libfido2-1:arm64 (1.12.0-2+b1) ...
-#6 25.13 Selecting previously unselected package openssh-client.
-#6 25.13 Preparing to unpack .../09-openssh-client_1%3a9.2p1-2+deb12u4_arm64.deb ...
-#6 25.14 Unpacking openssh-client (1:9.2p1-2+deb12u4) ...
-#6 25.20 Selecting previously unselected package libbrotli1:arm64.
-#6 25.20 Preparing to unpack .../10-libbrotli1_1.0.9-2+b6_arm64.deb ...
-#6 25.20 Unpacking libbrotli1:arm64 (1.0.9-2+b6) ...
-#6 25.23 Selecting previously unselected package libsasl2-modules-db:arm64.
-#6 25.23 Preparing to unpack .../11-libsasl2-modules-db_2.1.28+dfsg-10_arm64.deb ...
-#6 25.28 Unpacking libsasl2-modules-db:arm64 (2.1.28+dfsg-10) ...
-#6 25.30 Selecting previously unselected package libsasl2-2:arm64.
-#6 25.30 Preparing to unpack .../12-libsasl2-2_2.1.28+dfsg-10_arm64.deb ...
-#6 25.30 Unpacking libsasl2-2:arm64 (2.1.28+dfsg-10) ...
-#6 25.32 Selecting previously unselected package libldap-2.5-0:arm64.
-#6 25.32 Preparing to unpack .../13-libldap-2.5-0_2.5.13+dfsg-5_arm64.deb ...
-#6 25.32 Unpacking libldap-2.5-0:arm64 (2.5.13+dfsg-5) ...
-#6 25.34 Selecting previously unselected package libnghttp2-14:arm64.
-#6 25.34 Preparing to unpack .../14-libnghttp2-14_1.52.0-1+deb12u2_arm64.deb ...
-#6 25.35 Unpacking libnghttp2-14:arm64 (1.52.0-1+deb12u2) ...
-#6 25.37 Selecting previously unselected package libpsl5:arm64.
-#6 25.37 Preparing to unpack .../15-libpsl5_0.21.2-1_arm64.deb ...
-#6 25.37 Unpacking libpsl5:arm64 (0.21.2-1) ...
-#6 25.39 Selecting previously unselected package librtmp1:arm64.
-#6 25.39 Preparing to unpack .../16-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_arm64.deb ...
-#6 25.39 Unpacking librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2+b2) ...
-#6 25.42 Selecting previously unselected package libssh2-1:arm64.
-#6 25.42 Preparing to unpack .../17-libssh2-1_1.10.0-3+b1_arm64.deb ...
-#6 25.42 Unpacking libssh2-1:arm64 (1.10.0-3+b1) ...
-#6 25.44 Selecting previously unselected package libcurl3-gnutls:arm64.
-#6 25.44 Preparing to unpack .../18-libcurl3-gnutls_7.88.1-10+deb12u8_arm64.deb ...
-#6 25.45 Unpacking libcurl3-gnutls:arm64 (7.88.1-10+deb12u8) ...
-#6 25.48 Selecting previously unselected package libexpat1:arm64.
-#6 25.48 Preparing to unpack .../19-libexpat1_2.5.0-1+deb12u1_arm64.deb ...
-#6 25.49 Unpacking libexpat1:arm64 (2.5.0-1+deb12u1) ...
-#6 25.50 Selecting previously unselected package liberror-perl.
-#6 25.50 Preparing to unpack .../20-liberror-perl_0.17029-2_all.deb ...
-#6 25.51 Unpacking liberror-perl (0.17029-2) ...
-#6 25.52 Selecting previously unselected package git-man.
-#6 25.52 Preparing to unpack .../21-git-man_1%3a2.39.5-0+deb12u2_all.deb ...
-#6 25.52 Unpacking git-man (1:2.39.5-0+deb12u2) ...
-#6 25.60 Selecting previously unselected package git.
-#6 25.60 Preparing to unpack .../22-git_1%3a2.39.5-0+deb12u2_arm64.deb ...
-#6 25.60 Unpacking git (1:2.39.5-0+deb12u2) ...
-#6 25.90 Selecting previously unselected package libldap-common.
-#6 25.90 Preparing to unpack .../23-libldap-common_2.5.13+dfsg-5_all.deb ...
-#6 25.90 Unpacking libldap-common (2.5.13+dfsg-5) ...
-#6 25.92 Selecting previously unselected package libsasl2-modules:arm64.
-#6 25.92 Preparing to unpack .../24-libsasl2-modules_2.1.28+dfsg-10_arm64.deb ...
-#6 25.93 Unpacking libsasl2-modules:arm64 (2.1.28+dfsg-10) ...
-#6 25.94 Selecting previously unselected package libxau6:arm64.
-#6 25.94 Preparing to unpack .../25-libxau6_1%3a1.0.9-1_arm64.deb ...
-#6 25.95 Unpacking libxau6:arm64 (1:1.0.9-1) ...
-#6 25.96 Selecting previously unselected package libxdmcp6:arm64.
-#6 25.97 Preparing to unpack .../26-libxdmcp6_1%3a1.1.2-3_arm64.deb ...
-#6 25.97 Unpacking libxdmcp6:arm64 (1:1.1.2-3) ...
-#6 26.01 Selecting previously unselected package libxcb1:arm64.
-#6 26.01 Preparing to unpack .../27-libxcb1_1.15-1_arm64.deb ...
-#6 26.01 Unpacking libxcb1:arm64 (1.15-1) ...
-#6 26.03 Selecting previously unselected package libx11-data.
-#6 26.03 Preparing to unpack .../28-libx11-data_2%3a1.8.4-2+deb12u2_all.deb ...
-#6 26.03 Unpacking libx11-data (2:1.8.4-2+deb12u2) ...
-#6 26.07 Selecting previously unselected package libx11-6:arm64.
-#6 26.07 Preparing to unpack .../29-libx11-6_2%3a1.8.4-2+deb12u2_arm64.deb ...
-#6 26.07 Unpacking libx11-6:arm64 (2:1.8.4-2+deb12u2) ...
-#6 26.12 Selecting previously unselected package libxext6:arm64.
-#6 26.12 Preparing to unpack .../30-libxext6_2%3a1.3.4-1+b1_arm64.deb ...
-#6 26.13 Unpacking libxext6:arm64 (2:1.3.4-1+b1) ...
-#6 26.14 Selecting previously unselected package libxmuu1:arm64.
-#6 26.14 Preparing to unpack .../31-libxmuu1_2%3a1.1.3-3_arm64.deb ...
-#6 26.14 Unpacking libxmuu1:arm64 (2:1.1.3-3) ...
-#6 26.16 Selecting previously unselected package patch.
-#6 26.16 Preparing to unpack .../32-patch_2.7.6-7_arm64.deb ...
-#6 26.16 Unpacking patch (2.7.6-7) ...
-#6 26.17 Selecting previously unselected package publicsuffix.
-#6 26.17 Preparing to unpack .../33-publicsuffix_20230209.2326-1_all.deb ...
-#6 26.18 Unpacking publicsuffix (20230209.2326-1) ...
-#6 26.19 Selecting previously unselected package xauth.
-#6 26.19 Preparing to unpack .../34-xauth_1%3a1.1.2-1_arm64.deb ...
-#6 26.20 Unpacking xauth (1:1.1.2-1) ...
-#6 26.21 Setting up libexpat1:arm64 (2.5.0-1+deb12u1) ...
-#6 26.22 Setting up libxau6:arm64 (1:1.0.9-1) ...
-#6 26.22 Setting up libpsl5:arm64 (0.21.2-1) ...
-#6 26.22 Setting up libcbor0.8:arm64 (0.8.0-2+b1) ...
-#6 26.23 Setting up libbrotli1:arm64 (1.0.9-2+b6) ...
-#6 26.23 Setting up libsasl2-modules:arm64 (2.1.28+dfsg-10) ...
-#6 26.24 Setting up libnghttp2-14:arm64 (1.52.0-1+deb12u2) ...
-#6 26.25 Setting up less (590-2.1~deb12u2) ...
-#6 26.26 Setting up libldap-common (2.5.13+dfsg-5) ...
-#6 26.27 Setting up libsasl2-modules-db:arm64 (2.1.28+dfsg-10) ...
-#6 26.27 Setting up perl-modules-5.36 (5.36.0-7+deb12u1) ...
-#6 26.28 Setting up libx11-data (2:1.8.4-2+deb12u2) ...
-#6 26.28 Setting up librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2+b2) ...
-#6 26.28 Setting up patch (2.7.6-7) ...
-#6 26.29 Setting up libgdbm-compat4:arm64 (1.23-3) ...
-#6 26.30 Setting up libsasl2-2:arm64 (2.1.28+dfsg-10) ...
-#6 26.30 Setting up git-man (1:2.39.5-0+deb12u2) ...
-#6 26.31 Setting up libssh2-1:arm64 (1.10.0-3+b1) ...
-#6 26.31 Setting up libfido2-1:arm64 (1.12.0-2+b1) ...
-#6 26.32 Setting up libbsd0:arm64 (0.11.7-2) ...
-#6 26.32 Setting up publicsuffix (20230209.2326-1) ...
-#6 26.32 Setting up libperl5.36:arm64 (5.36.0-7+deb12u1) ...
-#6 26.33 Setting up libxdmcp6:arm64 (1:1.1.2-3) ...
-#6 26.34 Setting up libxcb1:arm64 (1.15-1) ...
-#6 26.34 Setting up libedit2:arm64 (3.1-20221030-2) ...
-#6 26.34 Setting up libldap-2.5-0:arm64 (2.5.13+dfsg-5) ...
-#6 26.35 Setting up perl (5.36.0-7+deb12u1) ...
-#6 26.36 Setting up libx11-6:arm64 (2:1.8.4-2+deb12u2) ...
-#6 26.36 Setting up libxmuu1:arm64 (2:1.1.3-3) ...
-#6 26.36 Setting up openssh-client (1:9.2p1-2+deb12u4) ...
-#6 26.40 Setting up libxext6:arm64 (2:1.3.4-1+b1) ...
-#6 26.40 Setting up libcurl3-gnutls:arm64 (7.88.1-10+deb12u8) ...
-#6 26.41 Setting up liberror-perl (0.17029-2) ...
-#6 26.42 Setting up git (1:2.39.5-0+deb12u2) ...
-#6 26.42 Setting up xauth (1:1.1.2-1) ...
-#6 26.43 Processing triggers for libc-bin (2.36-9+deb12u9) ...
-#6 DONE 26.5s
+#6 0.366 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#6 0.576 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#6 0.666 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+#6 0.759 Get:4 http://deb.debian.org/debian bookworm/main arm64 Packages [8693 kB]
+#6 2.880 Get:5 http://deb.debian.org/debian bookworm-updates/main arm64 Packages [13.3 kB]
+#6 2.926 Get:6 http://deb.debian.org/debian-security bookworm-security/main arm64 Packages [239 kB]
+#6 3.649 Fetched 9199 kB in 3s (2659 kB/s)
+#6 3.649 Reading package lists...
+#6 4.012 Reading package lists...
+#6 4.359 Building dependency tree...
+#6 4.449 Reading state information...
+#6 4.559 openssl is already the newest version (3.0.15-1~deb12u1).
+#6 4.559 openssl set to manually installed.
+#6 4.559 The following additional packages will be installed:
+#6 4.559   git-man less libbrotli1 libbsd0 libcbor0.8 libcurl3-gnutls libedit2
+#6 4.559   liberror-perl libexpat1 libfido2-1 libgdbm-compat4 libldap-2.5-0
+#6 4.559   libldap-common libnghttp2-14 libperl5.36 libpsl5 librtmp1 libsasl2-2
+#6 4.559   libsasl2-modules libsasl2-modules-db libssh2-1 libx11-6 libx11-data libxau6
+#6 4.559   libxcb1 libxdmcp6 libxext6 libxmuu1 openssh-client patch perl
+#6 4.559   perl-modules-5.36 publicsuffix xauth
+#6 4.560 Suggested packages:
+#6 4.560   gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui
+#6 4.560   gitk gitweb git-cvs git-mediawiki git-svn sensible-utils
+#6 4.560   libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal
+#6 4.560   libsasl2-modules-ldap libsasl2-modules-otp libsasl2-modules-sql keychain
+#6 4.560   libpam-ssh monkeysphere ssh-askpass ed diffutils-doc perl-doc
+#6 4.560   libterm-readline-gnu-perl | libterm-readline-perl-perl make
+#6 4.560   libtap-harness-archive-perl
+#6 4.705 The following NEW packages will be installed:
+#6 4.705   git git-man less libbrotli1 libbsd0 libcbor0.8 libcurl3-gnutls libedit2
+#6 4.705   liberror-perl libexpat1 libfido2-1 libgdbm-compat4 libldap-2.5-0
+#6 4.705   libldap-common libnghttp2-14 libperl5.36 libpsl5 librtmp1 libsasl2-2
+#6 4.705   libsasl2-modules libsasl2-modules-db libssh2-1 libx11-6 libx11-data libxau6
+#6 4.705   libxcb1 libxdmcp6 libxext6 libxmuu1 openssh-client patch perl
+#6 4.705   perl-modules-5.36 publicsuffix xauth
+#6 4.841 0 upgraded, 35 newly installed, 0 to remove and 0 not upgraded.
+#6 4.841 Need to get 20.7 MB of archives.
+#6 4.841 After this operation, 116 MB of additional disk space will be used.
+#6 4.841 Get:1 http://deb.debian.org/debian bookworm/main arm64 perl-modules-5.36 all 5.36.0-7+deb12u1 [2815 kB]
+#6 6.524 Get:2 http://deb.debian.org/debian bookworm/main arm64 libgdbm-compat4 arm64 1.23-3 [48.0 kB]
+#6 6.540 Get:3 http://deb.debian.org/debian bookworm/main arm64 libperl5.36 arm64 5.36.0-7+deb12u1 [4014 kB]
+#6 8.459 Get:4 http://deb.debian.org/debian bookworm/main arm64 perl arm64 5.36.0-7+deb12u1 [239 kB]
+#6 8.637 Get:5 http://deb.debian.org/debian bookworm/main arm64 less arm64 590-2.1~deb12u2 [128 kB]
+#6 8.711 Get:6 http://deb.debian.org/debian bookworm/main arm64 libbsd0 arm64 0.11.7-2 [115 kB]
+#6 8.845 Get:7 http://deb.debian.org/debian bookworm/main arm64 libedit2 arm64 3.1-20221030-2 [88.1 kB]
+#6 8.846 Get:8 http://deb.debian.org/debian bookworm/main arm64 libcbor0.8 arm64 0.8.0-2+b1 [26.0 kB]
+#6 8.846 Get:9 http://deb.debian.org/debian bookworm/main arm64 libfido2-1 arm64 1.12.0-2+b1 [72.6 kB]
+#6 8.885 Get:10 http://deb.debian.org/debian bookworm/main arm64 openssh-client arm64 1:9.2p1-2+deb12u4 [939 kB]
+#6 9.458 Get:11 http://deb.debian.org/debian bookworm/main arm64 libbrotli1 arm64 1.0.9-2+b6 [269 kB]
+#6 9.534 Get:12 http://deb.debian.org/debian bookworm/main arm64 libsasl2-modules-db arm64 2.1.28+dfsg-10 [20.8 kB]
+#6 9.777 Get:13 http://deb.debian.org/debian bookworm/main arm64 libsasl2-2 arm64 2.1.28+dfsg-10 [58.0 kB]
+#6 9.793 Get:14 http://deb.debian.org/debian bookworm/main arm64 libldap-2.5-0 arm64 2.5.13+dfsg-5 [171 kB]
+#6 9.881 Get:15 http://deb.debian.org/debian bookworm/main arm64 libnghttp2-14 arm64 1.52.0-1+deb12u2 [68.6 kB]
+#6 9.917 Get:16 http://deb.debian.org/debian bookworm/main arm64 libpsl5 arm64 0.21.2-1 [58.6 kB]
+#6 9.919 Get:17 http://deb.debian.org/debian bookworm/main arm64 librtmp1 arm64 2.4+20151223.gitfa8646d.1-2+b2 [59.4 kB]
+#6 9.919 Get:18 http://deb.debian.org/debian bookworm/main arm64 libssh2-1 arm64 1.10.0-3+b1 [172 kB]
+#6 9.982 Get:19 http://deb.debian.org/debian bookworm/main arm64 libcurl3-gnutls arm64 7.88.1-10+deb12u8 [360 kB]
+#6 10.16 Get:20 http://deb.debian.org/debian bookworm/main arm64 libexpat1 arm64 2.5.0-1+deb12u1 [84.6 kB]
+#6 10.18 Get:21 http://deb.debian.org/debian bookworm/main arm64 liberror-perl all 0.17029-2 [29.0 kB]
+#6 10.22 Get:22 http://deb.debian.org/debian-security bookworm-security/main arm64 git-man all 1:2.39.5-0+deb12u2 [2053 kB]
+#6 11.94 Get:23 http://deb.debian.org/debian-security bookworm-security/main arm64 git arm64 1:2.39.5-0+deb12u2 [7148 kB]
+#6 16.60 Get:24 http://deb.debian.org/debian bookworm/main arm64 libldap-common all 2.5.13+dfsg-5 [29.3 kB]
+#6 16.61 Get:25 http://deb.debian.org/debian bookworm/main arm64 libsasl2-modules arm64 2.1.28+dfsg-10 [63.1 kB]
+#6 16.64 Get:26 http://deb.debian.org/debian bookworm/main arm64 libxau6 arm64 1:1.0.9-1 [19.7 kB]
+#6 16.67 Get:27 http://deb.debian.org/debian bookworm/main arm64 libxdmcp6 arm64 1:1.1.2-3 [25.4 kB]
+#6 16.67 Get:28 http://deb.debian.org/debian bookworm/main arm64 libxcb1 arm64 1.15-1 [143 kB]
+#6 16.72 Get:29 http://deb.debian.org/debian bookworm/main arm64 libx11-data all 2:1.8.4-2+deb12u2 [292 kB]
+#6 16.93 Get:30 http://deb.debian.org/debian bookworm/main arm64 libx11-6 arm64 2:1.8.4-2+deb12u2 [735 kB]
+#6 17.19 Get:31 http://deb.debian.org/debian bookworm/main arm64 libxext6 arm64 2:1.3.4-1+b1 [51.7 kB]
+#6 17.23 Get:32 http://deb.debian.org/debian bookworm/main arm64 libxmuu1 arm64 2:1.1.3-3 [24.0 kB]
+#6 17.65 Get:33 http://deb.debian.org/debian bookworm/main arm64 patch arm64 2.7.6-7 [121 kB]
+#6 17.73 Get:34 http://deb.debian.org/debian bookworm/main arm64 publicsuffix all 20230209.2326-1 [126 kB]
+#6 17.76 Get:35 http://deb.debian.org/debian bookworm/main arm64 xauth arm64 1:1.1.2-1 [35.5 kB]
+#6 17.88 debconf: delaying package configuration, since apt-utils is not installed
+#6 17.90 Fetched 20.7 MB in 13s (1586 kB/s)
+#6 17.91 Selecting previously unselected package perl-modules-5.36.
+#6 17.91 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6680 files and directories currently installed.)
+#6 17.92 Preparing to unpack .../00-perl-modules-5.36_5.36.0-7+deb12u1_all.deb ...
+#6 17.92 Unpacking perl-modules-5.36 (5.36.0-7+deb12u1) ...
+#6 18.13 Selecting previously unselected package libgdbm-compat4:arm64.
+#6 18.13 Preparing to unpack .../01-libgdbm-compat4_1.23-3_arm64.deb ...
+#6 18.14 Unpacking libgdbm-compat4:arm64 (1.23-3) ...
+#6 18.15 Selecting previously unselected package libperl5.36:arm64.
+#6 18.16 Preparing to unpack .../02-libperl5.36_5.36.0-7+deb12u1_arm64.deb ...
+#6 18.16 Unpacking libperl5.36:arm64 (5.36.0-7+deb12u1) ...
+#6 18.40 Selecting previously unselected package perl.
+#6 18.40 Preparing to unpack .../03-perl_5.36.0-7+deb12u1_arm64.deb ...
+#6 18.41 Unpacking perl (5.36.0-7+deb12u1) ...
+#6 18.43 Selecting previously unselected package less.
+#6 18.43 Preparing to unpack .../04-less_590-2.1~deb12u2_arm64.deb ...
+#6 18.44 Unpacking less (590-2.1~deb12u2) ...
+#6 18.46 Selecting previously unselected package libbsd0:arm64.
+#6 18.46 Preparing to unpack .../05-libbsd0_0.11.7-2_arm64.deb ...
+#6 18.46 Unpacking libbsd0:arm64 (0.11.7-2) ...
+#6 18.48 Selecting previously unselected package libedit2:arm64.
+#6 18.48 Preparing to unpack .../06-libedit2_3.1-20221030-2_arm64.deb ...
+#6 18.49 Unpacking libedit2:arm64 (3.1-20221030-2) ...
+#6 18.50 Selecting previously unselected package libcbor0.8:arm64.
+#6 18.50 Preparing to unpack .../07-libcbor0.8_0.8.0-2+b1_arm64.deb ...
+#6 18.51 Unpacking libcbor0.8:arm64 (0.8.0-2+b1) ...
+#6 18.52 Selecting previously unselected package libfido2-1:arm64.
+#6 18.52 Preparing to unpack .../08-libfido2-1_1.12.0-2+b1_arm64.deb ...
+#6 18.53 Unpacking libfido2-1:arm64 (1.12.0-2+b1) ...
+#6 18.55 Selecting previously unselected package openssh-client.
+#6 18.55 Preparing to unpack .../09-openssh-client_1%3a9.2p1-2+deb12u4_arm64.deb ...
+#6 18.55 Unpacking openssh-client (1:9.2p1-2+deb12u4) ...
+#6 18.63 Selecting previously unselected package libbrotli1:arm64.
+#6 18.63 Preparing to unpack .../10-libbrotli1_1.0.9-2+b6_arm64.deb ...
+#6 18.63 Unpacking libbrotli1:arm64 (1.0.9-2+b6) ...
+#6 18.66 Selecting previously unselected package libsasl2-modules-db:arm64.
+#6 18.66 Preparing to unpack .../11-libsasl2-modules-db_2.1.28+dfsg-10_arm64.deb ...
+#6 18.66 Unpacking libsasl2-modules-db:arm64 (2.1.28+dfsg-10) ...
+#6 18.68 Selecting previously unselected package libsasl2-2:arm64.
+#6 18.68 Preparing to unpack .../12-libsasl2-2_2.1.28+dfsg-10_arm64.deb ...
+#6 18.68 Unpacking libsasl2-2:arm64 (2.1.28+dfsg-10) ...
+#6 18.70 Selecting previously unselected package libldap-2.5-0:arm64.
+#6 18.71 Preparing to unpack .../13-libldap-2.5-0_2.5.13+dfsg-5_arm64.deb ...
+#6 18.71 Unpacking libldap-2.5-0:arm64 (2.5.13+dfsg-5) ...
+#6 18.73 Selecting previously unselected package libnghttp2-14:arm64.
+#6 18.73 Preparing to unpack .../14-libnghttp2-14_1.52.0-1+deb12u2_arm64.deb ...
+#6 18.73 Unpacking libnghttp2-14:arm64 (1.52.0-1+deb12u2) ...
+#6 18.76 Selecting previously unselected package libpsl5:arm64.
+#6 18.76 Preparing to unpack .../15-libpsl5_0.21.2-1_arm64.deb ...
+#6 18.76 Unpacking libpsl5:arm64 (0.21.2-1) ...
+#6 18.78 Selecting previously unselected package librtmp1:arm64.
+#6 18.78 Preparing to unpack .../16-librtmp1_2.4+20151223.gitfa8646d.1-2+b2_arm64.deb ...
+#6 18.78 Unpacking librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#6 18.80 Selecting previously unselected package libssh2-1:arm64.
+#6 18.80 Preparing to unpack .../17-libssh2-1_1.10.0-3+b1_arm64.deb ...
+#6 18.80 Unpacking libssh2-1:arm64 (1.10.0-3+b1) ...
+#6 18.83 Selecting previously unselected package libcurl3-gnutls:arm64.
+#6 18.83 Preparing to unpack .../18-libcurl3-gnutls_7.88.1-10+deb12u8_arm64.deb ...
+#6 18.83 Unpacking libcurl3-gnutls:arm64 (7.88.1-10+deb12u8) ...
+#6 18.86 Selecting previously unselected package libexpat1:arm64.
+#6 18.86 Preparing to unpack .../19-libexpat1_2.5.0-1+deb12u1_arm64.deb ...
+#6 18.86 Unpacking libexpat1:arm64 (2.5.0-1+deb12u1) ...
+#6 18.88 Selecting previously unselected package liberror-perl.
+#6 18.88 Preparing to unpack .../20-liberror-perl_0.17029-2_all.deb ...
+#6 18.88 Unpacking liberror-perl (0.17029-2) ...
+#6 18.89 Selecting previously unselected package git-man.
+#6 18.89 Preparing to unpack .../21-git-man_1%3a2.39.5-0+deb12u2_all.deb ...
+#6 18.89 Unpacking git-man (1:2.39.5-0+deb12u2) ...
+#6 18.96 Selecting previously unselected package git.
+#6 18.97 Preparing to unpack .../22-git_1%3a2.39.5-0+deb12u2_arm64.deb ...
+#6 18.97 Unpacking git (1:2.39.5-0+deb12u2) ...
+#6 19.23 Selecting previously unselected package libldap-common.
+#6 19.23 Preparing to unpack .../23-libldap-common_2.5.13+dfsg-5_all.deb ...
+#6 19.23 Unpacking libldap-common (2.5.13+dfsg-5) ...
+#6 19.25 Selecting previously unselected package libsasl2-modules:arm64.
+#6 19.25 Preparing to unpack .../24-libsasl2-modules_2.1.28+dfsg-10_arm64.deb ...
+#6 19.25 Unpacking libsasl2-modules:arm64 (2.1.28+dfsg-10) ...
+#6 19.28 Selecting previously unselected package libxau6:arm64.
+#6 19.28 Preparing to unpack .../25-libxau6_1%3a1.0.9-1_arm64.deb ...
+#6 19.28 Unpacking libxau6:arm64 (1:1.0.9-1) ...
+#6 19.30 Selecting previously unselected package libxdmcp6:arm64.
+#6 19.30 Preparing to unpack .../26-libxdmcp6_1%3a1.1.2-3_arm64.deb ...
+#6 19.30 Unpacking libxdmcp6:arm64 (1:1.1.2-3) ...
+#6 19.32 Selecting previously unselected package libxcb1:arm64.
+#6 19.32 Preparing to unpack .../27-libxcb1_1.15-1_arm64.deb ...
+#6 19.32 Unpacking libxcb1:arm64 (1.15-1) ...
+#6 19.34 Selecting previously unselected package libx11-data.
+#6 19.34 Preparing to unpack .../28-libx11-data_2%3a1.8.4-2+deb12u2_all.deb ...
+#6 19.34 Unpacking libx11-data (2:1.8.4-2+deb12u2) ...
+#6 19.37 Selecting previously unselected package libx11-6:arm64.
+#6 19.37 Preparing to unpack .../29-libx11-6_2%3a1.8.4-2+deb12u2_arm64.deb ...
+#6 19.38 Unpacking libx11-6:arm64 (2:1.8.4-2+deb12u2) ...
+#6 19.42 Selecting previously unselected package libxext6:arm64.
+#6 19.42 Preparing to unpack .../30-libxext6_2%3a1.3.4-1+b1_arm64.deb ...
+#6 19.42 Unpacking libxext6:arm64 (2:1.3.4-1+b1) ...
+#6 19.44 Selecting previously unselected package libxmuu1:arm64.
+#6 19.45 Preparing to unpack .../31-libxmuu1_2%3a1.1.3-3_arm64.deb ...
+#6 19.45 Unpacking libxmuu1:arm64 (2:1.1.3-3) ...
+#6 19.46 Selecting previously unselected package patch.
+#6 19.46 Preparing to unpack .../32-patch_2.7.6-7_arm64.deb ...
+#6 19.46 Unpacking patch (2.7.6-7) ...
+#6 19.48 Selecting previously unselected package publicsuffix.
+#6 19.48 Preparing to unpack .../33-publicsuffix_20230209.2326-1_all.deb ...
+#6 19.49 Unpacking publicsuffix (20230209.2326-1) ...
+#6 19.51 Selecting previously unselected package xauth.
+#6 19.51 Preparing to unpack .../34-xauth_1%3a1.1.2-1_arm64.deb ...
+#6 19.51 Unpacking xauth (1:1.1.2-1) ...
+#6 19.53 Setting up libexpat1:arm64 (2.5.0-1+deb12u1) ...
+#6 19.53 Setting up libxau6:arm64 (1:1.0.9-1) ...
+#6 19.53 Setting up libpsl5:arm64 (0.21.2-1) ...
+#6 19.54 Setting up libcbor0.8:arm64 (0.8.0-2+b1) ...
+#6 19.54 Setting up libbrotli1:arm64 (1.0.9-2+b6) ...
+#6 19.55 Setting up libsasl2-modules:arm64 (2.1.28+dfsg-10) ...
+#6 19.56 Setting up libnghttp2-14:arm64 (1.52.0-1+deb12u2) ...
+#6 19.57 Setting up less (590-2.1~deb12u2) ...
+#6 19.57 Setting up libldap-common (2.5.13+dfsg-5) ...
+#6 19.58 Setting up libsasl2-modules-db:arm64 (2.1.28+dfsg-10) ...
+#6 19.58 Setting up perl-modules-5.36 (5.36.0-7+deb12u1) ...
+#6 19.59 Setting up libx11-data (2:1.8.4-2+deb12u2) ...
+#6 19.59 Setting up librtmp1:arm64 (2.4+20151223.gitfa8646d.1-2+b2) ...
+#6 19.60 Setting up patch (2.7.6-7) ...
+#6 19.60 Setting up libgdbm-compat4:arm64 (1.23-3) ...
+#6 19.61 Setting up libsasl2-2:arm64 (2.1.28+dfsg-10) ...
+#6 19.61 Setting up git-man (1:2.39.5-0+deb12u2) ...
+#6 19.62 Setting up libssh2-1:arm64 (1.10.0-3+b1) ...
+#6 19.62 Setting up libfido2-1:arm64 (1.12.0-2+b1) ...
+#6 19.63 Setting up libbsd0:arm64 (0.11.7-2) ...
+#6 19.64 Setting up publicsuffix (20230209.2326-1) ...
+#6 19.64 Setting up libperl5.36:arm64 (5.36.0-7+deb12u1) ...
+#6 19.64 Setting up libxdmcp6:arm64 (1:1.1.2-3) ...
+#6 19.65 Setting up libxcb1:arm64 (1.15-1) ...
+#6 19.66 Setting up libedit2:arm64 (3.1-20221030-2) ...
+#6 19.66 Setting up libldap-2.5-0:arm64 (2.5.13+dfsg-5) ...
+#6 19.67 Setting up perl (5.36.0-7+deb12u1) ...
+#6 19.68 Setting up libx11-6:arm64 (2:1.8.4-2+deb12u2) ...
+#6 19.68 Setting up libxmuu1:arm64 (2:1.1.3-3) ...
+#6 19.68 Setting up openssh-client (1:9.2p1-2+deb12u4) ...
+#6 19.72 Setting up libxext6:arm64 (2:1.3.4-1+b1) ...
+#6 19.73 Setting up libcurl3-gnutls:arm64 (7.88.1-10+deb12u8) ...
+#6 19.73 Setting up liberror-perl (0.17029-2) ...
+#6 19.74 Setting up git (1:2.39.5-0+deb12u2) ...
+#6 19.75 Setting up xauth (1:1.1.2-1) ...
+#6 19.75 Processing triggers for libc-bin (2.36-9+deb12u9) ...
+#6 DONE 19.9s
 
 #7 [3/7] RUN useradd -m app_user
 #7 DONE 0.1s
@@ -320,35 +320,34 @@ drwxr-xr-x   3 thilak_reddy  staff    96 Feb  2 17:15 compliance_logs
 #9 DONE 0.0s
 
 #10 [6/7] RUN pip install --no-cache-dir cryptography
-#10 1.725 Collecting cryptography
-#10 1.986   Downloading cryptography-44.0.0-cp39-abi3-manylinux_2_34_aarch64.whl (3.9 MB)
-#10 2.662      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 5.9 MB/s eta 0:00:00
-#10 2.901 Collecting cffi>=1.12
-#10 3.095   Downloading cffi-1.17.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (447 kB)
-#10 3.258      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 447.2/447.2 kB 2.7 MB/s eta 0:00:00
-#10 3.312 Collecting pycparser
-#10 3.370   Downloading pycparser-2.22-py3-none-any.whl (117 kB)
-#10 3.391      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 5.9 MB/s eta 0:00:00
-#10 3.434 Installing collected packages: pycparser, cffi, cryptography
-#10 3.642 Successfully installed cffi-1.17.1 cryptography-44.0.0 pycparser-2.22
-#10 3.642 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
-#10 4.010 
-#10 4.010 [notice] A new release of pip is available: 23.0.1 -> 25.0
-#10 4.010 [notice] To update, run: pip install --upgrade pip
-#10 DONE 4.1s
+#10 1.778 Collecting cryptography
+#10 2.177   Downloading cryptography-44.0.0-cp39-abi3-manylinux_2_34_aarch64.whl (3.9 MB)
+#10 3.480      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 3.0 MB/s eta 0:00:00
+#10 3.826 Collecting cffi>=1.12
+#10 3.884   Downloading cffi-1.17.1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (447 kB)
+#10 3.986      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 447.2/447.2 kB 4.5 MB/s eta 0:00:00
+#10 4.048 Collecting pycparser
+#10 4.094   Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+#10 4.115      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 7.2 MB/s eta 0:00:00
+#10 4.153 Installing collected packages: pycparser, cffi, cryptography
+#10 4.367 Successfully installed cffi-1.17.1 cryptography-44.0.0 pycparser-2.22
+#10 4.367 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 4.615 
+#10 4.615 [notice] A new release of pip is available: 23.0.1 -> 25.0
+#10 4.615 [notice] To update, run: pip install --upgrade pip
+#10 DONE 4.8s
 
 #11 [7/7] RUN chown -R app_user:app_user /app
-#11 DONE 0.1s
+#11 DONE 0.2s
 
 #12 exporting to image
 #12 exporting layers
-#12 exporting layers 0.2s done
-#12 writing image sha256:095c29cff2c6e02265691009aa69b992f00e20fc4b655671effe667b7534df2c
-#12 writing image sha256:095c29cff2c6e02265691009aa69b992f00e20fc4b655671effe667b7534df2c done
+#12 exporting layers 0.3s done
+#12 writing image sha256:cf4cfb986f64a626f25569120f7d4a32250acc44399b4645bc97059e58e393d8 done
 #12 naming to docker.io/library/pci-test-app done
-#12 DONE 0.2s
+#12 DONE 0.3s
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/cf7p80fuyt4iyukzlcgzsq0x0
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/tkn0mht5d6fk5cps9nxedhb6c
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
@@ -360,13 +359,13 @@ View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux
 Error response from daemon: No such container: pci-test-app
 [Pipeline] sh
 + docker run -d --name pci-test-app -p 8443:8443 pci-test-app
-4e3a9951096beed0bef723d6e52c76029a05f24d23340dbaa96c98b509d5af00
+4882c234a07ba272f3dd9675a35d7c39dafea287b7cccb327deb7f30b3a6fd19
 [Pipeline] sleep
-Sleeping for 15 sec
+Sleeping for 10 sec
 [Pipeline] sh
 + docker logs pci-test-app
-2025-02-02T19:48:45 WARNING: Log file /var/log/syslog does not exist! Creating it with secure permissions.
-2025-02-02T19:48:45 ERROR: Permission denied: Cannot create /var/log/syslog. Run the script with sudo.
+2025-02-02T19:55:10 WARNING: Log file /var/log/syslog does not exist! Creating it with secure permissions.
+2025-02-02T19:55:10 ERROR: Permission denied: Cannot create /var/log/syslog. Run the script with sudo.
 hint: Using 'master' as the name for the initial branch. This default branch name
 hint: is subject to change. To configure the initial branch name to use in all
 hint: of your new repositories, which will suppress this warning, call:
@@ -378,7 +377,7 @@ hint: 'development'. The just-created branch can be renamed via this command:
 hint: 
 hint: 	git branch -m <name>
 Initialized empty Git repository in /app/.git/
-[master (root-commit) 8d7de7b] Initial commit
+[master (root-commit) 16cb768] Initial commit
  11 files changed, 423 insertions(+)
  create mode 100644 .env
  create mode 100644 CHANGELOG.md
@@ -391,8 +390,8 @@ Initialized empty Git repository in /app/.git/
  create mode 100644 config/server.key
  create mode 100644 docs/incident_response.md
  create mode 100755 scripts/backup.sh
-2025-02-02T19:48:45 INFO: Encrypted Transaction: ZHVtbXlfdHJhbnNhY3Rpb25fZGF0YQ==
-2025-02-02T19:48:45 INFO: Starting HTTPS server on port 8443 using TLS 1.2+
+2025-02-02T19:55:10 INFO: Encrypted Transaction: ZHVtbXlfdHJhbnNhY3Rpb25fZGF0YQ==
+2025-02-02T19:55:10 INFO: Starting HTTPS server on port 8443 using TLS 1.2+
 [Pipeline] }
 [Pipeline] // script
 [Pipeline] }
@@ -417,8 +416,8 @@ drwxr-xr-x  4 thilak_reddy  staff  128 Feb  3 01:17 controls
 + echo 'Checking container logs...'
 Checking container logs...
 + docker logs pci-test-app
-2025-02-02T19:48:45 WARNING: Log file /var/log/syslog does not exist! Creating it with secure permissions.
-2025-02-02T19:48:45 ERROR: Permission denied: Cannot create /var/log/syslog. Run the script with sudo.
+2025-02-02T19:55:10 WARNING: Log file /var/log/syslog does not exist! Creating it with secure permissions.
+2025-02-02T19:55:10 ERROR: Permission denied: Cannot create /var/log/syslog. Run the script with sudo.
 hint: Using 'master' as the name for the initial branch. This default branch name
 hint: is subject to change. To configure the initial branch name to use in all
 hint: of your new repositories, which will suppress this warning, call:
@@ -430,7 +429,7 @@ hint: 'development'. The just-created branch can be renamed via this command:
 hint: 
 hint: 	git branch -m <name>
 Initialized empty Git repository in /app/.git/
-[master (root-commit) 8d7de7b] Initial commit
+[master (root-commit) 16cb768] Initial commit
  11 files changed, 423 insertions(+)
  create mode 100644 .env
  create mode 100644 CHANGELOG.md
@@ -443,26 +442,26 @@ Initialized empty Git repository in /app/.git/
  create mode 100644 config/server.key
  create mode 100644 docs/incident_response.md
  create mode 100755 scripts/backup.sh
-2025-02-02T19:48:45 INFO: Encrypted Transaction: ZHVtbXlfdHJhbnNhY3Rpb25fZGF0YQ==
-2025-02-02T19:48:45 INFO: Starting HTTPS server on port 8443 using TLS 1.2+
-+ docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept -v /Users/thilak_reddy/.jenkins/workspace/compliance-new/compliance/inspec/pci:/profile -v /var/run/docker.sock:/var/run/docker.sock chef/inspec exec /profile --target docker://pci-test-app
+2025-02-02T19:55:10 INFO: Encrypted Transaction: ZHVtbXlfdHJhbnNhY3Rpb25fZGF0YQ==
+2025-02-02T19:55:10 INFO: Starting HTTPS server on port 8443 using TLS 1.2+
++ docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept -v /Users/thilak_reddy/.jenkins/workspace/compliance-new/compliance/inspec/pci:/profile -v /var/run/docker.sock:/var/run/docker.sock chef/inspec exec /profile --no-color --target docker://pci-test-app
 +---------------------------------------------+
 ✔ 1 product license accepted.
 +---------------------------------------------+
 
 Profile:   PCI DSS Enhanced Checks (pci-checks)
 Version:   1.2.0
-Target:    docker://4e3a9951096beed0bef723d6e52c76029a05f24d23340dbaa96c98b509d5af00
+Target:    docker://4882c234a07ba272f3dd9675a35d7c39dafea287b7cccb327deb7f30b3a6fd19
 Target ID: da39a3ee-5e6b-5b0d-b255-bfef95601890
 
-[38;5;41m  ✔  pci-4: Verify Access Control Settings[0m
-[38;5;41m     ✔  Command: `docker ps --format "{{.Names}} {{.User}}"` stdout is expected not to include "root"[0m
-[38;5;41m  ✔  pci-1: Prevent PAN in logs[0m
-[38;5;41m     ✔  Command: `docker logs pci-test-app` stdout is expected not to match /\d{4}-\d{4}-\d{4}-\d{4}/[0m
+  ✔  pci-4: Verify Access Control Settings
+     ✔  Command: `docker ps --format "{{.Names}} {{.User}}"` stdout is expected not to include "root"
+  ✔  pci-1: Prevent PAN in logs
+     ✔  Command: `docker logs pci-test-app` stdout is expected not to match /\d{4}-\d{4}-\d{4}-\d{4}/
 
 
-Profile Summary: [38;5;41m2 successful controls[0m, 0 control failures, 0 controls skipped
-Test Summary: [38;5;41m2 successful[0m, 0 failures, 0 skipped
+Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
+Test Summary: 2 successful, 0 failures, 0 skipped
 [Pipeline] }
 [Pipeline] // script
 [Pipeline] }
@@ -472,40 +471,40 @@ Test Summary: [38;5;41m2 successful[0m, 0 failures, 0 skipped
 [Pipeline] script
 [Pipeline] {
 [Pipeline] sh
-+ docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept -v /Users/thilak_reddy/.jenkins/workspace/compliance-new/compliance/inspec/soc2:/profile -v /var/run/docker.sock:/var/run/docker.sock chef/inspec exec /profile --target docker://pci-test-app
++ docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept -v /Users/thilak_reddy/.jenkins/workspace/compliance-new/compliance/inspec/soc2:/profile -v /var/run/docker.sock:/var/run/docker.sock chef/inspec exec /profile --no-color --target docker://pci-test-app
 +---------------------------------------------+
 ✔ 1 product license accepted.
 +---------------------------------------------+
 
 Profile:   SOC2 Compliance Checks (soc2-checks)
 Version:   1.2.0
-Target:    docker://4e3a9951096beed0bef723d6e52c76029a05f24d23340dbaa96c98b509d5af00
+Target:    docker://4882c234a07ba272f3dd9675a35d7c39dafea287b7cccb327deb7f30b3a6fd19
 Target ID: da39a3ee-5e6b-5b0d-b255-bfef95601890
 
-[38;5;41m  ✔  soc2-3: Backup and Recovery[0m
-[38;5;41m     ✔  File /app/backup is expected to be directory[0m
-[38;5;41m     ✔  Command: `find /app/backup -mtime -1 -name "*.backup"` exit_status is expected to eq 0[0m
-[38;5;41m  ✔  soc2-7: Business Continuity Testing[0m
-[38;5;41m     ✔  JSON /app/backup/last_test.json ["recovery_time"] is expected to be < 240[0m
-[38;5;41m     ✔  JSON /app/backup/last_test.json ["success"] is expected to eq true[0m
-[38;5;41m     ✔  JSON /app/backup/last_test.json ["data_integrity_check"] is expected to eq true[0m
-[38;5;41m  ✔  soc2-5: Change Management Controls[0m
-[38;5;41m     ✔  File /app/CHANGELOG.md is expected to exist[0m
-[38;5;41m     ✔  File /app/CHANGELOG.md content is expected to match /## \[\d+\.\d+\.\d+\]/[0m
-[38;5;41m  ✔  soc2-6: Incident Response Procedures[0m
-[38;5;41m     ✔  File /app/docs/incident_response.md is expected to exist[0m
-[38;5;41m     ✔  File /app/docs/incident_response.md content is expected to match /Emergency Contacts/[0m
-[38;5;41m     ✔  File /app/docs/incident_response.md content is expected to match /Incident Classification/[0m
-[38;5;41m     ✔  File /app/docs/incident_response.md content is expected to match /Response Procedures/[0m
-[38;5;41m     ✔  Directory /app/logs/incidents is expected to exist[0m
-[38;5;41m     ✔  Directory /app/logs/incidents mode is expected to cmp == "0750"[0m
-[38;5;41m  ✔  soc2-2: Logging and Monitoring[0m
-[38;5;41m     ✔  File /app/logs is expected to be directory[0m
-[38;5;41m     ✔  File /app/logs mode is expected to cmp == "0755"[0m
+  ✔  soc2-3: Backup and Recovery
+     ✔  File /app/backup is expected to be directory
+     ✔  Command: `find /app/backup -mtime -1 -name "*.backup"` exit_status is expected to eq 0
+  ✔  soc2-7: Business Continuity Testing
+     ✔  JSON /app/backup/last_test.json ["recovery_time"] is expected to be < 240
+     ✔  JSON /app/backup/last_test.json ["success"] is expected to eq true
+     ✔  JSON /app/backup/last_test.json ["data_integrity_check"] is expected to eq true
+  ✔  soc2-5: Change Management Controls
+     ✔  File /app/CHANGELOG.md is expected to exist
+     ✔  File /app/CHANGELOG.md content is expected to match /## \[\d+\.\d+\.\d+\]/
+  ✔  soc2-6: Incident Response Procedures
+     ✔  File /app/docs/incident_response.md is expected to exist
+     ✔  File /app/docs/incident_response.md content is expected to match /Emergency Contacts/
+     ✔  File /app/docs/incident_response.md content is expected to match /Incident Classification/
+     ✔  File /app/docs/incident_response.md content is expected to match /Response Procedures/
+     ✔  Directory /app/logs/incidents is expected to exist
+     ✔  Directory /app/logs/incidents mode is expected to cmp == "0750"
+  ✔  soc2-2: Logging and Monitoring
+     ✔  File /app/logs is expected to be directory
+     ✔  File /app/logs mode is expected to cmp == "0755"
 
 
-Profile Summary: [38;5;41m5 successful controls[0m, 0 control failures, 0 controls skipped
-Test Summary: [38;5;41m15 successful[0m, 0 failures, 0 skipped
+Profile Summary: 5 successful controls, 0 control failures, 0 controls skipped
+Test Summary: 15 successful, 0 failures, 0 skipped
 [Pipeline] }
 [Pipeline] // script
 [Pipeline] }
@@ -514,8 +513,8 @@ Test Summary: [38;5;41m15 successful[0m, 0 failures, 0 skipped
 [Pipeline] { (Declarative: Post Actions)
 [Pipeline] sh
 + docker logs pci-test-app
-2025-02-02T19:48:45 WARNING: Log file /var/log/syslog does not exist! Creating it with secure permissions.
-2025-02-02T19:48:45 ERROR: Permission denied: Cannot create /var/log/syslog. Run the script with sudo.
+2025-02-02T19:55:10 WARNING: Log file /var/log/syslog does not exist! Creating it with secure permissions.
+2025-02-02T19:55:10 ERROR: Permission denied: Cannot create /var/log/syslog. Run the script with sudo.
 hint: Using 'master' as the name for the initial branch. This default branch name
 hint: is subject to change. To configure the initial branch name to use in all
 hint: of your new repositories, which will suppress this warning, call:
@@ -526,8 +525,8 @@ hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
 hint: 'development'. The just-created branch can be renamed via this command:
 hint: 
 hint: 	git branch -m <name>
-2025-02-02T19:48:45 INFO: Encrypted Transaction: ZHVtbXlfdHJhbnNhY3Rpb25fZGF0YQ==
-2025-02-02T19:48:45 INFO: Starting HTTPS server on port 8443 using TLS 1.2+
+2025-02-02T19:55:10 INFO: Encrypted Transaction: ZHVtbXlfdHJhbnNhY3Rpb25fZGF0YQ==
+2025-02-02T19:55:10 INFO: Starting HTTPS server on port 8443 using TLS 1.2+
 [Pipeline] sh
 + docker rm -f pci-test-app
 pci-test-app

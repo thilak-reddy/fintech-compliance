@@ -71,5 +71,16 @@ pipeline {
             sh "docker rm -f ${CONTAINER_NAME} || true"
             archiveArtifacts artifacts: 'compliance_logs/docker_logs.txt, compliance_logs/compliance_logs.txt', allowEmptyArchive: true
         }
+
+        success {
+            script {
+                sh """
+                cd /Users/thilak_reddy/Desktop/fintech-compliance/
+                git add .
+                git commit -m "test"
+                git push
+                """
+            }
+        }
     }
 }
