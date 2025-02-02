@@ -1,34 +1,43 @@
-FROM python:3.11-slim
+FROM python:3.9-slim
+
+# Install required system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    openssl \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user
-RUN useradd -m -s /bin/bash app_user
+RUN groupadd -r app_user && useradd -r -g app_user app_user
 
+# Set up application directory
 WORKDIR /app
 
-# Copy only the files that exist
-COPY app.py .
-COPY config/password_policy.json ./config/
+# Copy requirements first for better caching
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Create directories if you need them
-RUN mkdir -p config docs backup
+# Copy application files
+COPY . .
 
-# If you have specific files that must go in these directories,
-# copy them individually or create placeholder files
-# For example:
-# COPY config/*.json ./config/ || true
-# COPY docs/*.md ./docs/ || true
-# COPY backup/*.* ./backup/ || true
-
-# Create required directories
-RUN mkdir -p logs logs/incidents && \
+# Create required directories with proper permissions
+RUN mkdir -p backup logs/incidents docs config && \
     chown -R app_user:app_user /app && \
-    chmod 644 app.py && \
-    chmod 600 config/password_policy.json && \
     chmod 755 logs && \
     chmod 750 logs/incidents && \
-    chmod 755 backup
+    chmod 755 config && \
+    chmod 600 config/password_policy.json
 
 # Switch to non-root user
 USER app_user
 
-CMD ["python", "app.py"]
+# Expose the port used in app.py (8443)
+EXPOSE 8443
+
+# Health check using the correct port
+HEALTHCHECK --interval=30s --timeout=5s \
+    CMD curl -k https://localhost:8443/health || exit 1
+
+# Run the application
+CMD ["python3", "app.py"]
