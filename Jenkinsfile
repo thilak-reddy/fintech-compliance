@@ -6,13 +6,13 @@ pipeline {
     }
     
     stages {
-        // stage('Security Scan') {
-        //     steps {
-        //         // Scan for secrets and security issues
-        //         sh 'git secrets --scan'
-        //         sh 'bandit -r .'
-        //     }
-        // }
+        stage('Security Scan') {
+            steps {
+                // Scan for secrets and security issues
+                sh 'git secrets --scan'
+                sh 'bandit -r .'
+            }
+        }
         
         stage('Build') {
             steps {
