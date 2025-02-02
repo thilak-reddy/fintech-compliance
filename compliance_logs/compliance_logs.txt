@@ -1,0 +1,65 @@
+Started by user thilak
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/thilak_reddy/.jenkins/workspace/compliance-new
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Copy Files)
+[Pipeline] sh
++ cp -r /Users/thilak_reddy/Desktop/fintech-compliance ./
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Application)
+[Pipeline] dir
+Running in /Users/thilak_reddy/.jenkins/workspace/compliance-new/fintech-compliance/app
+[Pipeline] {
+[Pipeline] sh
++ python app.py
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Compliance Checks)
+[Pipeline] dir
+Running in /Users/thilak_reddy/.jenkins/workspace/compliance-new/fintech-compliance
+[Pipeline] {
+[Pipeline] sh
++ inspec exec compliance/inspec/pci --no-color --reporter json:pci_report.json
+[Pipeline] sh
++ inspec exec compliance/inspec/soc2 --no-color --reporter json:soc2_report.json
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] echo
+Deploying the application as compliance checks passed...
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] sh
++ ls -l fintech-compliance/pci_report.json fintech-compliance/soc2_report.json
+-rw-r--r--  1 thilak_reddy  staff  2193 Feb  2 17:09 fintech-compliance/pci_report.json
+-rw-r--r--  1 thilak_reddy  staff   413 Feb  2 17:09 fintech-compliance/soc2_report.json
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] cleanWs
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] done
+[Pipeline] echo
+Compliance checks passed and deployment succeeded!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
