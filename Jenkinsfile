@@ -40,14 +40,13 @@ pipeline {
             steps {
                 script {
                     sh """
-                    sleep 10
                     echo 'Checking container logs...'
                     docker logs ${CONTAINER_NAME}
 
                     docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept \\
                       -v ${WORKSPACE}/compliance/inspec/pci:/profile \\
                       -v /var/run/docker.sock:/var/run/docker.sock \\
-                      chef/inspec exec /profile --target docker://${CONTAINER_NAME}
+                      chef/inspec exec /profile --no-color --target docker://${CONTAINER_NAME}
                     """
                 }
             }
@@ -60,7 +59,7 @@ pipeline {
                     docker run --rm --platform linux/amd64 -e CHEF_LICENSE=accept \\
                       -v ${WORKSPACE}/compliance/inspec/soc2:/profile \\
                       -v /var/run/docker.sock:/var/run/docker.sock \\
-                      chef/inspec exec /profile --target docker://${CONTAINER_NAME}
+                      chef/inspec exec /profile --no-color --target docker://${CONTAINER_NAME}
                     """
                 }
             }
