@@ -24,7 +24,7 @@ pipeline {
                 script {
                     sh "docker rm -f ${CONTAINER_NAME} || true"
                     sh "docker run -d --name ${CONTAINER_NAME} -p 8443:8443 ${IMAGE_NAME}"
-                    sleep(time: 10, unit: 'SECONDS')
+                    sleep(time: 15, unit: 'SECONDS')
                     sh "docker logs ${CONTAINER_NAME}"
                 }
             }
@@ -47,8 +47,6 @@ pipeline {
                       -v ${WORKSPACE}/compliance/inspec/pci:/profile \\
                       -v /var/run/docker.sock:/var/run/docker.sock \\
                       chef/inspec exec /profile --no-color --reporter json:/pci_report.json --target docker://${CONTAINER_NAME}
-
-                    mv pci_report.json ${WORKSPACE}/compliance_logs/pci_report.json
                     """
                 }
             }
@@ -62,8 +60,6 @@ pipeline {
                       -v ${WORKSPACE}/compliance/inspec/soc2:/profile \\
                       -v /var/run/docker.sock:/var/run/docker.sock \\
                       chef/inspec exec /profile --no-color --reporter json:/soc2_report.json --target docker://${CONTAINER_NAME}
-
-                    mv soc2_report.json ${WORKSPACE}/compliance_logs/soc2_report.json
                     """
                 }
             }
@@ -81,10 +77,15 @@ pipeline {
                 sh """
                 cd /Users/thilak_reddy/Desktop/fintech-compliance/
                 git add .
-                git commit -m "test"
-                git push
+                if ! git diff --cached --quiet; then
+                    git commit -m "test"
+                    git push
+                else
+                    echo "No changes to commit"
+                fi
                 """
             }
         }
+
     }
 }
